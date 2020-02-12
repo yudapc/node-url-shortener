@@ -8,9 +8,16 @@ services:
       - "3000:3000"
     links:
       - redis
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
     environment:
      - NODE_ENV=production
      - APP_PORT=3000
+     - APP_URL=http://localhost:3000
      - REDIS_PORT=6379
      - REDIS_HOST=redis
   redis:
@@ -18,3 +25,16 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.30'
+          memory: 1M
+        reservations:
+          cpus: '0.10'
+          memory: 1M
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s

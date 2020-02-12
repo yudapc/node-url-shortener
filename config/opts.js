@@ -1,12 +1,13 @@
 const redis = process.env.REDIS_HOST || 'localhost';
 const redisPort = process.env.REDIS_PORT || 6379;
+const appUrl = process.env.APP_URL || 'http://127.0.0.1';
 const appPort = process.env.APP_PORT || 3000;
 
 module.exports = require('yargs')
   .usage('Usage: $0 [options]')
   .alias('u', 'url')
   .describe('u', 'Application URL')
-  .default('u', 'http://127.0.0.1:' + appPort)
+  .default('u', appUrl)
   .alias('p', 'port')
   .describe('p', 'Port number for the Express application')
   .default('p', appPort)
