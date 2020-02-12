@@ -1,15 +1,14 @@
 body{
-  background: #f5f5f5;
+  background: #ffffff;
 }
 
 #header{
-  background: #00bfff;
+  background: #993333;
   color: #ffffff;
 }
 
 .container {
     text-align: center;
-    padding-top: 50px;
 }
 
 .url-input{
@@ -19,6 +18,7 @@ body{
 
 .url-form{
   padding: 25px;
+  padding-top: 10em;
 }
 
 .flex-group{
