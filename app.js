@@ -27,4 +27,6 @@ app.listen(opts.port, function () {
     opts.port, app.settings.env
   );
   console.log('Running on %s (Press CTRL+C to quit)', opts.url);
+  console.log('Redis Host %s ', opts['redis-host']);
+  console.log('Redis Port %s ', opts['redis-port']);
 });
