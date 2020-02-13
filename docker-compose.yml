@@ -8,6 +8,8 @@ services:
       - "3000:3000"
     links:
       - redis
+    depends_on:
+      - redis
     deploy:
       restart_policy:
         condition: on-failure
@@ -22,7 +24,11 @@ services:
      - REDIS_HOST=redis
   redis:
     container_name: redis
-    image: "redis:alpine"
+    hostname: redis
+    image: redis:4.0.5-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - ./data:/data
     ports:
       - "6379:6379"
     deploy:
