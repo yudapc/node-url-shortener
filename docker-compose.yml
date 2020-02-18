@@ -4,7 +4,7 @@ services:
 
   web:
     container_name: web
-    image: "shortener_url:latest"
+    image: yudapc/shortener_url:0.0.1
     command: npm start
     ports:
       - "3000:3000"
@@ -12,7 +12,7 @@ services:
       - redis
     depends_on:
       - redis
-    
+
   redis:
     container_name: redis
     hostname: redis
@@ -22,5 +22,5 @@ services:
       - ./data:/data
     ports:
       - "6379:6379"
-    
-   
+
+

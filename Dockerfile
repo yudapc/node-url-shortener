@@ -8,10 +8,13 @@ COPY package*.json ./
 
 USER node
 
-RUN npm install
+RUN if [ "$NODE_ENV" = "development" ]; \
+	then npm install;  \
+	else npm install --only=production; \
+	fi
 
 COPY --chown=node:node . .
 
 EXPOSE 3000
 
-CMD [ "NODE_ENV=production", "npm", "start" ]
+CMD [ "npm", "start" ]
