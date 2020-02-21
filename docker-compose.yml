@@ -2,11 +2,31 @@ version: '3'
 
 services:
 
-  web:
+  web1:
     image: yudapc/shortener_url:0.0.1
     command: npm start
     ports:
-      - "3000-3002:3000"
+      - "3000:3000"
+    links:
+      - redis
+    depends_on:
+      - redis
+
+  web2:
+    image: yudapc/shortener_url:0.0.1
+    command: npm start
+    ports:
+      - "3001:3000"
+    links:
+      - redis
+    depends_on:
+      - redis
+
+  web3:
+    image: yudapc/shortener_url:0.0.1
+    command: npm start
+    ports:
+      - "3002:3000"
     links:
       - redis
     depends_on:
