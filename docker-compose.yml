@@ -3,18 +3,16 @@ version: '3'
 services:
 
   web:
-    container_name: web
     image: yudapc/shortener_url:0.0.1
     command: npm start
     ports:
-      - "3000:3000"
+      - "3000-3002:3000"
     links:
       - redis
     depends_on:
       - redis
 
   redis:
-    container_name: redis
     hostname: redis
     image: redis:4.0.5-alpine
     command: ["redis-server", "--appendonly", "yes"]
